@@ -1,0 +1,21 @@
+<div id="Header" class="structural fixedWidth">
+  <div class="inner">
+    <div id="Logo">
+      <a href="/">
+        <h1>global names postbox</h1>
+      </a>
+    </div>
+    <ul id="SiteNavigation">
+      <%- if controller_name == "home" -%>
+        <li class="active"><%= link_to "Home", root_path %></li>
+      <%- else -%>
+        <li><%= link_to "Home", root_path %></li>
+      <%- end -%>
+      <%- if controller_name == "uploads" -%>
+        <li class="active"><%= link_to "Upload", new_upload_path %></li>
+      <%- else -%>
+        <li><%= link_to "Upload", new_upload_path %></li>
+      <%- end -%>
+    </ul>
+  </div>
+</div>
