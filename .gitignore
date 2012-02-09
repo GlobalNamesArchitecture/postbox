@@ -1,0 +1,12 @@
+.bundle
+tags
+config/database.yml
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/*
+public/uploads/**/*
+public/uploads/*
+capybara*.html
+.DS_Store
+cucumber-rails

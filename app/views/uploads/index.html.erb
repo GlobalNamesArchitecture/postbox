@@ -1,0 +1,17 @@
+<%= title "GlobalNames PostBox Uploads" %>
+
+<table>
+  <tr>
+    <th>Email</th>
+  </tr>
+  <% for upload in @uploads %>
+    <tr>
+      <td>
+        <%=h upload.email %>
+      </td>
+      <td><%= link_to "Show", upload %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Upload", new_upload_path %></p>
