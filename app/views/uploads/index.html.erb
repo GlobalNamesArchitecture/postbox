@@ -1,10 +1,14 @@
 <%= title "GlobalNames PostBox Uploads" %>
+<%- content_for :header do -%>
+  <h1>GlobalNames PostBox Uploads</h1>
+<%- end -%>
 
+<% if @uploads.size > 0 %>
 <table>
   <tr>
     <th>Email</th>
   </tr>
-  <% for upload in @uploads %>
+  <% @uploads.each do |upload| %>
     <tr>
       <td>
         <%=h upload.email %>
@@ -13,5 +17,6 @@
     </tr>
   <% end %>
 </table>
+<% end %>
 
 <p><%= link_to "New Upload", new_upload_path %></p>
