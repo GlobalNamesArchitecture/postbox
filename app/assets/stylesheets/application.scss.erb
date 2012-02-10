@@ -6,7 +6,7 @@
  *= require_tree . 
 */
 body{
-  color:#404040;
+  color:#323232;
   background: url(<%= asset_path 'body-background.png' %>) repeat scroll 0 0 transparent;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -27,7 +27,7 @@ ol, ul {
   list-style:none outside none;
 }
 a{
-  color:#385E39;
+  color:#45704D;
   text-decoration: none;
 }
 p{
@@ -70,6 +70,7 @@ fieldset{
   position: relative;
 }
 #SiteNavigation li{
+  border:1px solid transparent;
   display: block;
   float: left;
   margin: 0 5px;
@@ -78,7 +79,7 @@ fieldset{
 #SiteNavigation li.active{
   border:1px solid #ccc;
   border-radius:20px;
-  background-color:#eee;
+  background-color:#fafafa;
 }
 #SiteNavigation li a{
   display: block;
@@ -87,6 +88,12 @@ fieldset{
   padding: 5px 17px;
   position: relative;
 }
+#SiteNavigation li:hover{
+  border:1px solid #ccc;
+  border-radius:20px;
+  background-color:#eee;
+}
+
 #SiteContainer .background{
   background: url(<%= asset_path 'header-gradient.png' %>) repeat-x scroll 0 0 transparent;
 }
@@ -113,8 +120,7 @@ fieldset{
   left: 0;
 }
 #BodyContent .inner {
-  padding: 30px 40px 40px;
-  min-height:500px;
+  padding: 0px;
 }
 #Footer .inner {
   padding: 30px 20px;
@@ -153,7 +159,42 @@ fieldset{
     margin: 40px 0;
     width: 100%;
 }
-
+#content-wrapper {
+  padding: 12px 2px 0;
+}
+#content-splash{
+  position: relative;
+  width: 1029px;
+}
+#content-splash h2{
+  margin:0.5em 1em;
+}
+#content-body{
+  min-height:200px;
+  padding: 0 40px;
+  position: relative;
+  font-size:1.2em;
+}
+#content-features{
+  background: url(<%= asset_path 'home-content-background-bottom.png' %>) no-repeat scroll center bottom #FAFAFA;
+  border-top: 1px solid #F5F5F5;
+  margin-top: 40px;
+  padding: 30px;
+}
+#content-features .content-feature{
+  float:left;
+}
+#content-features-logo{
+  width:250px;
+}
+#content-features-description{
+  width:700px;
+}
+#content-features h3{
+  font-size: 13px;
+  font-weight: bold;
+  margin: 15px 0 6px;
+}
 
 .clear:after{
   clear: both;
@@ -167,19 +208,17 @@ fieldset{
 
 .tagline{
   font-size:1.5em;
+  font-weight:bold;
   text-align:center;
   margin:2em 0;
   color:#962825;
 }
 
 .error-dialog{
-  width: 35em;
   padding: 3em;
-  margin: 4em auto 0 auto;
+  margin: 2.5em auto 0 auto;
   border: 1px solid #ccc;
   border-radius:8px;
   text-align:center;
-}
-.error-dialog h2{
-  font-size:1.5em;
+  width:70%;
 }

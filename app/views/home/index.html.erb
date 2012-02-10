@@ -1,9 +1,19 @@
-<p class="tagline">Submit scientific names and classifications to the Global Names environment</p>
+  <% content_for :content_splash do %>
+    <p class="tagline">Submit scientific names and classifications to the Global Names environment</p>
+  <% end %>
 
-<p>We prefer to receive lists in <%= link_to "Darwin Core Archive", "http://www.gbif.org/informatics/standards-and-tools/publishing-data/data-standards/darwin-core-archives/" %> (DwC-A) format with an included metadata file in Ecological Markup Language (EML), though we also offer services to accept files in other formats for transformation into validly formed DwC-A.</p>
+  <p>We prefer to receive lists in <%= link_to "Darwin Core Archive", "http://www.gbif.org/informatics/standards-and-tools/publishing-data/data-standards/darwin-core-archives/" %> (DwC-A) format with an included metadata file in Ecological Markup Language (EML), though we also offer services to accept files in other formats for transformation into validly formed DwC-A.</p>
 
-<p>By default, submissions to <em>postbox</em> will reside in the <%= link_to "Global Names Classification and List Repository", "http://gnaclr.globalnames.org" %> with a <%= link_to "CC0 waiver", "http://creativecommons.org/choose/zero/" %> and name occurrences will be added the <%= link_to "Global Names Index", "http://gni.globalnames.org" %>.</p>
+  <p>By default, submissions to <em>postbox</em> will reside in the <%= link_to "Global Names Classification and List Repository", "http://gnaclr.globalnames.org" %> with a <%= link_to "CC0 waiver", "http://creativecommons.org/choose/zero/" %> and name occurrences will be added the <%= link_to "Global Names Index", "http://gni.globalnames.org" %>.</p>
 
-<div class="hrDotted"></div>
-
-<p>Lorem ipsum...</p>
+  <% content_for :content_features do %>
+    <div id="content-features-logo" class="content-feature">
+      <%= image_tag("eol_logo.png") %>
+      <h3>Encyclopedia of Life Tree Challenge</h3>
+      Coming soon...
+    </div>
+    <div id="content-features-description" class="content-feature">
+      <p>EOL and Global Names are offering prizes to the individual or team that can provide large or very large phylogenetically-organized set(s) of scientific names.</p>
+      <p>For more details, read about the <%= link_to "EOL Tree Challenge", "http://eol.org/info/287" %> and join the <%= link_to "EOL Tree Challenge community", "http://eol.org/communities/98" %> to ask questions.</p>
+    </div>
+  <% end %>

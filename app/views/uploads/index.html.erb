@@ -1,5 +1,9 @@
 <% title "Uploads" %>
 
+<%- content_for :content_splash do -%>
+<%= content_tag :h2, "Uploads" %>
+<%- end -%>
+
 <% if @uploads.size > 0 %>
 <table>
   <tr>
