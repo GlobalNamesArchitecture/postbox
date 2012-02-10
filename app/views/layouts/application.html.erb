@@ -14,16 +14,11 @@
     <%= render :partial => 'layouts/header' %>
 
    <div id="BodyContent" class="structural fixedWidth clear">
-     <div class="background">
-       <div class="middle"></div>
-       <div class="top"></div>
-       <div class="bottom"></div>
-     </div>
      <div class="inner">
-        <%- flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <%- end -%>
        <div id="content-wrapper">
+         <%- flash.each do |name, msg| -%>
+           <%= content_tag :div, msg, :id => "flash_#{name}" %>
+         <%- end -%>
          <%- if content_for?(:content_splash) -%>
            <div id="content-splash">
              <%=  content_for(:content_splash) %>

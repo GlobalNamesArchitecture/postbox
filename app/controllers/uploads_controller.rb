@@ -19,6 +19,7 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(params[:upload])
     if @upload.save
+      flash[:notice] = "Your file successfully uploaded"
       Mailer.queue_email(@upload).deliver
       redirect_to upload_path @upload
     else
