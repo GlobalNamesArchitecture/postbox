@@ -6,16 +6,21 @@
       </a>
     </div>
     <ul id="SiteNavigation">
-<!--
       <%- if controller_name == "home" -%>
         <li class="active"><%= link_to "Home", root_path %></li>
       <%- else -%>
         <li><%= link_to "Home", root_path %></li>
       <%- end -%>
+<!--
       <%- if controller_name == "uploads" -%>
         <li class="active"><%= link_to "Upload", new_upload_path %></li>
       <%- else -%>
         <li><%= link_to "Upload", new_upload_path %></li>
+      <%- end -%>
+      <%- if controller_name == "contacts" -%>
+        <li class="active"><%= link_to "Contact", new_contact_path %></li>
+      <%- else -%>
+        <li><%= link_to "Contact", new_contact_path %></li>
       <%- end -%>
 -->
     </ul>
