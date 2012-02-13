@@ -55,9 +55,9 @@ label{
   text-align: right;
   width: 200px;
 }
-.dwc_upload {
+input[type="text"], input[type="file"], textarea {
   color: #000000;
-  font-size: 1.2em;
+  font-size: 1em;
   font-size-adjust: none;
   font-stretch: normal;
   font-style: normal;
@@ -67,6 +67,10 @@ label{
   line-height: normal;
   padding: 3px 5px;
   margin:0.2em;
+}
+textarea{
+  padding: 10px;
+  resize:none;
 }
 .required abbr{
   color:#962825;
@@ -157,9 +161,22 @@ label{
   border-radius:6px;
   background-color:#CBE4C3;
 }
+#flash_warning{
+  font-size:1.2em;
+  padding:1.5em;
+  margin:0.5em 1em;
+  border:1px solid #4D7045;
+  border-radius:6px;
+  background-color:#FFE4E1;
+}
 .inline-errors{
   color:#962825;
+  display:inline;
 }
+.error input, .error textarea{
+  background-color:#FFE4E1;
+}
+
 .structural{
   display:block;
   position:relative;
@@ -231,6 +248,40 @@ label{
   font-weight: bold;
   margin: 15px 0 6px;
 }
+
+/* form and buttons */
+input[type=submit] {
+  border: 0 solid #0F1215;
+  color: #FFFFFF;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 15px 5px;
+  min-height: 38px;
+  padding: 7px 15px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+input.create {
+  background: #5aa52b;
+  background: -moz-linear-gradient(center bottom , #1B7004 4%, #5AA52B 58%, #90CF4C 98%) repeat scroll 0 0 transparent;
+  background-image:-webkit-gradient(linear, 0 100%, 0 0%, color-stop(0.04, #1B7004), color-stop(0.58, #5AA52B), color-stop(0.98, #90CF4C));
+}
+input.create:hover{
+  box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);
+  -moz-box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);
+  -webkit-box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);
+}
+input.cancel {
+  background: #FF4040;
+  background: -moz-linear-gradient(center bottom, rgb(139,35,35) 4%, rgb(255,64,64) 58%, rgb(255,193,193) 98%);
+  background: -webkit-gradient(linear,left bottom,left top, color-stop(0.04, rgb(139,35,35)), color-stop(0.58, rgb(255,64,64)), color-stop(0.98, rgb(255,193,193)));
+}
+input.cancel:hover{
+  box-shadow: inset 1px 1px 5px 1px rgb(255,193,193), 0 1px 2px rgba(0,0,0, 1);
+  -moz-box-shadow: inset 1px 1px 5px 1px rgb(255,193,193), 0 1px 2px rgba(0,0,0, 1);
+  -webkit-box-shadow: inset 1px 1px 5px 1px rgb(255,193,193), 0 1px 2px rgba(0,0,0, 1);
+}
+
 
 .clear:after{
   clear: both;

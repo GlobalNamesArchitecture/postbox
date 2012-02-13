@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p><%= @contact.message %></p>
+    <p>=======================</p>
+    <p>From: <%= !@contact.name.nil? ? @contact.name : "" %> <%= @contact.email %></p>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 class Upload < ActiveRecord::Base
 
   attr_accessible :email, :dwc, :dwc_cache
-  validates_presence_of :email
+  validates_presence_of :email, :dwc
 
   mount_uploader :dwc, DarwinCoreUploader
   after_save :enqueue

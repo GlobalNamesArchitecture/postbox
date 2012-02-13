@@ -5,6 +5,9 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% if @redirect_url %>
+    <meta http-equiv='refresh' content='<%= @redirect_delay -%>;url=<%= @redirect_url -%>'>
+  <% end %>
 </head>
 <body>
   <div id="SiteContainer" class="structural">
