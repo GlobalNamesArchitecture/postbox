@@ -57,6 +57,10 @@ Postbox::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   resources :uploads
   
+  resources :trees do
+    resources :nodes, :only => [:index]
+  end
+  
   resources :contacts, :only => [:new, :create]
   
   root :to => 'home#index'

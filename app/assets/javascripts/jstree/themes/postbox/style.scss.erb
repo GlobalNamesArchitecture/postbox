@@ -1,0 +1,80 @@
+/*
+ * jsTree postbox theme 1.0
+ * Supported features: dots/no-dots, icons/no-icons, focused, loading
+ * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
+ */
+.jstree-postbox{ font-size:14px !important; }
+.jstree-postbox li, 
+.jstree-postbox ins { background-image:url(<%= asset_path "jstree/themes/postbox/d.png" %>); background-repeat:no-repeat; background-color:transparent; }
+.jstree-postbox li { background-position:-90px 0; background-repeat:repeat-y; }
+.jstree-postbox li.jstree-last { background:transparent; }
+.jstree-postbox .jstree-open > ins { background-position:-72px 0; }
+.jstree-postbox .jstree-closed > ins { background-position:-54px 0; }
+.jstree-postbox .jstree-leaf > ins { background-position:-36px 0; }
+
+.jstree-postbox .jstree-hovered { background:#e7f4f9; border:1px solid #d8f0fa; padding:0 1px 0 1px; }
+.jstree-postbox .jstree-clicked { background:#beebff; border:1px solid #99defd; padding:0 1px 0 1px; display:inline; }
+.jstree-postbox a .jstree-icon { background-position:-56px -19px; }
+.jstree-postbox a.jstree-loading .jstree-icon { background:url(<%= asset_path "jstree/themes/postbox/throbber.gif" %>) center center no-repeat !important; }
+
+.jstree-postbox.jstree-focused { background:#ffffff; }
+
+.jstree-postbox .jstree-no-dots li, 
+.jstree-postbox .jstree-no-dots .jstree-leaf > ins { background:transparent; }
+.jstree-postbox .jstree-no-dots .jstree-open > ins { background-position:-18px 0; }
+.jstree-postbox .jstree-no-dots .jstree-closed > ins { background-position:0 0; }
+.jstree-postbox .jstree-no-icons a { display:inline; }
+.jstree-postbox .jstree-no-icons a .jstree-icon { display:none; }
+
+.jstree-postbox .jstree-search { font-style:italic; }
+
+.jstree-postbox .jstree-no-icons .jstree-checkbox { display:inline-block; }
+.jstree-postbox .jstree-no-checkboxes .jstree-checkbox { display:none !important; }
+.jstree-postbox .jstree-checked > a > .jstree-checkbox { background-position:-38px -19px; }
+.jstree-postbox .jstree-unchecked > a > .jstree-checkbox { background-position:-2px -19px; }
+.jstree-postbox .jstree-undetermined > a > .jstree-checkbox { background-position:-20px -19px; }
+.jstree-postbox .jstree-checked > a > .jstree-checkbox:hover { background-position:-38px -37px; }
+.jstree-postbox .jstree-unchecked > a > .jstree-checkbox:hover { background-position:-2px -37px; }
+.jstree-postbox .jstree-undetermined > a > .jstree-checkbox:hover { background-position:-20px -37px; }
+
+#vakata-dragged.jstree-postbox ins { background:transparent !important; }
+#vakata-dragged.jstree-postbox .jstree-ok { background:url(<%= asset_path "jstree/themes/postbox/d.png" %>) -2px -53px no-repeat !important; }
+#vakata-dragged.jstree-postbox .jstree-invalid { background:url(<%= asset_path "jstree/themes/postbox/d.png" %>) -18px -53px no-repeat !important; }
+#jstree-marker.jstree-postbox { background:url(<%= asset_path "jstree/themes/postbox/d.png" %>) -41px -57px no-repeat !important; }
+
+.jstree-postbox a.jstree-search { color:green; }
+
+.jstree-postbox li span { color:green; margin-left:2px; }
+.jstree-postbox li span.jstree-loading { background:url(<%= asset_path "jstree/themes/postbox/throbber.gif" %>) center center no-repeat !important; display:inline-block; width:16px; }
+
+/* INPUT FORM */
+.jstree-postbox .jstree-no-icons input.jstree-rename-input { padding:0px !important; margin:0px !important; left:18px !important; height:16px !important; line-height:16px !important; border:1px solid silver !important; }
+
+#vakata-contextmenu.jstree-postbox-context, 
+#vakata-contextmenu.jstree-postbox-context li ul { background:#EEF1F3; border:1px solid #979797; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
+#vakata-contextmenu.jstree-postbox-context li:hover { background-color:#BABFC3; }
+#vakata-contextmenu.jstree-postbox-context a { color:black; }
+#vakata-contextmenu.jstree-postbox-context a:hover, 
+#vakata-contextmenu.jstree-postbox-context .vakata-hover > a { padding:0 5px; border: 1px solid #BABFC3; background-color:#BABFC3; color:black; }
+#vakata-contextmenu.jstree-postbox-context li.chat-shortcut { display: none; }
+#vakata-contextmenu.jstree-postbox-context li.jstree-contextmenu-disabled a, 
+#vakata-contextmenu.jstree-postbox-context li.jstree-contextmenu-disabled a:hover { color:silver; background:transparent; border:0; padding:1px 4px; }
+#vakata-contextmenu.jstree-postbox-context li.vakata-separator { background:white; border-top:1px solid #e0e0e0; margin:0; }
+#vakata-contextmenu.jstree-postbox-context li ul { margin-left:-4px; }
+
+/* IE6 BEGIN */
+.jstree-postbox li, 
+.jstree-postbox ins,
+#vakata-dragged.jstree-postbox .jstree-invalid, 
+#vakata-dragged.jstree-postbox .jstree-ok, 
+#jstree-marker.jstree-postbox { _background-image:url(<%= asset_path "jstree/themes/postbox/d.gif" %>); }
+.jstree-postbox .jstree-open ins { _background-position:-72px 0; }
+.jstree-postbox .jstree-closed ins { _background-position:-54px 0; }
+.jstree-postbox .jstree-leaf ins { _background-position:-36px 0; }
+.jstree-postbox a ins.jstree-icon { _background-position:-56px -19px; }
+#vakata-contextmenu.jstree-postbox-context ins { _display:none; }
+#vakata-contextmenu.jstree-postbox-context li { _zoom:1; }
+.jstree-postbox .jstree-undetermined a .jstree-checkbox { _background-position:-20px -19px; }
+.jstree-postbox .jstree-checked a .jstree-checkbox { _background-position:-38px -19px; }
+.jstree-postbox .jstree-unchecked a .jstree-checkbox { _background-position:-2px -19px; }
+/* IE6 END */

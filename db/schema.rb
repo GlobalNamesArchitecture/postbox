@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210222740) do
+ActiveRecord::Schema.define(:version => 20120214023440) do
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20120210222740) do
     t.string   "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
   end
 
   add_index "nodes", ["parent_id"], :name => "index_nodes_on_parent_id"
@@ -43,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20120210222740) do
   create_table "trees", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "upload_id"
+    t.integer  "status"
   end
 
   create_table "uploads", :force => true do |t|
@@ -50,8 +55,6 @@ ActiveRecord::Schema.define(:version => 20120210222740) do
     t.string   "dwc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "dwc_processing"
-    t.integer  "tree_id"
   end
 
 end

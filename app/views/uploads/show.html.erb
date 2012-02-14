@@ -9,3 +9,39 @@
   <%=h @upload.email %>
 </p>
 
+<div id="upload-preview">
+
+<div id="tree-wrapper">
+
+<% if @upload.tree.status == 2 %>
+  <div id="tree"></div>
+
+  <% content_for :javascript do %>
+    <script type="text/javascript">
+    <!--//--><![CDATA[//><!--
+    jQuery.extend(TREE, {
+      "id"     : "<%= @upload.tree.id %>",
+      "root"   : "<%= @upload.tree.root.id %>",
+      "status" : "<%= @upload.tree.status %>"
+    });
+    $.jstree._themes = '<%= asset_path "jstree/themes/" %>';
+    //--><!]]>
+    </script>
+  <% end %>
+<% end %>
+
+</div>
+
+<% if @statistics %>
+<div id="tree-stats">
+  <h3>Basic Statistics</h3>
+<ul>
+<% @statistics.each do |type,stat| %>
+<%= content_tag :li, type.to_s << ": " << stat.to_s %>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+</div>
+
