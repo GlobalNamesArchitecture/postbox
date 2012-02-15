@@ -14,10 +14,8 @@
       <td>
         <%=h upload.email %>
       </td>
-      <td><%= link_to "Show", upload %></td>
+      <td><%= link_to "Show", upload.token %></td>
     </tr>
   <% end %>
 </table>
 <% end %>
-
-<p><%= link_to "New Upload", new_upload_path %></p>

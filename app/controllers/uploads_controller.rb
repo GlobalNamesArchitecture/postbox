@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   end
   
   def show
-    @upload = Upload.find_by_token(params[:id])
+    @upload = Upload.find_by_token!(params[:id])
     queue_size = Resque.size(:dwc_importer)
     if queue_size > 0
       flash[:notice] = "There #{queue_size == 1 ? 'is' : 'are'} #{help.pluralize(queue_size, "job")} in the queue. You will also receive an email message when processing is complete."
@@ -35,7 +35,7 @@ class UploadsController < ApplicationController
   end
   
   def destroy
-    @upload = Upload.find(params[:id])
+    @upload = Upload.find_by_token!(params[:id])
     if @upload.tree.nuke
       flash[:notice] = 'Tree successfully deleted'
       redirect_to :action => :new
