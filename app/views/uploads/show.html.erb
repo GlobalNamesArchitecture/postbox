@@ -7,6 +7,11 @@
 <p>
   <strong>Email:</strong>
   <%=h @upload.email %>
+
+  <% if @upload.tree.status == 2 %>
+    <strong>File:</strong>
+    <%= link_to "Download", @upload.dwc_url %> (<%= number_to_human_size @upload.dwc.size %>)
+  <% end %>
 </p>
 
 <div id="upload-preview">
@@ -32,12 +37,12 @@
 
 </div>
 
-<% if @statistics %>
+<% if @upload.tree.statistics && @upload.tree.status == 2 %>
 <div id="tree-stats">
   <h3>Basic Statistics</h3>
 <ul>
-<% @statistics.each do |type,stat| %>
-<%= content_tag :li, type.to_s << ": " << stat.to_s %>
+<% @upload.tree.statistics.each do |type,stat| %>
+<%= content_tag :li, type.to_s.humanize << ": " << stat.to_s.gsub(/(\d)(?=\d{3}+(?:\.|$))(\d{3}\..*)?/,'\1,\2') %>
 <% end %>
 </ul>
 </div>

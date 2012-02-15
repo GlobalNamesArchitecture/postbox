@@ -2,7 +2,7 @@ Thank you, <%= @upload.email %>
  
 You have successfully uploaded a file and it is now in the queue for processing.
  
-To view the status of your file, follow this link: <%= upload_url @upload %>.
+To view the status of your file, follow this link: <%= upload_url :id => @upload.token %>.
 
 ===============================================
 Global Names, http://www.globalnames.org

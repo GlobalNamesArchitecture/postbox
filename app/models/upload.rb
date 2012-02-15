@@ -6,6 +6,7 @@ class Upload < ActiveRecord::Base
 
   mount_uploader :dwc, DarwinCoreUploader
   
+  before_create :generate_token
   after_create :create_new_tree
   after_save :enqueue
   
@@ -18,6 +19,10 @@ class Upload < ActiveRecord::Base
     upload.tree.status = 1
     upload.tree.save
     upload.import
+  end
+  
+  def generate_token
+    self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
   
   def create_new_tree
@@ -56,7 +61,9 @@ class Upload < ActiveRecord::Base
       end
     end
     @nodes_count = 0
-    build_tree(dwc_tree)
+    Node.transaction do
+      build_tree(dwc_tree)
+    end
   end
 
   def build_tree(root, parent_id = self.tree.root.id)

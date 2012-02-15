@@ -4,14 +4,16 @@
 
 @TREE = @TREE || {}
 
-##
-## TREE CONFIGURATION
-##
 $ ->
+  ##
+  ## TREE CONFIGURATION
+  ##
   TREE.configuration =
     themes:
       theme: "postbox"
       icons: false
+    core:
+      animation: 100
     html_data:
       ajax:
         url: "/trees/" + TREE.id + "/nodes"

@@ -21,11 +21,21 @@ class Tree < ActiveRecord::Base
     end
   end
   
+  def nuke
+    Tree.connection.execute("DELETE FROM nodes WHERE tree_id = #{id}")
+    destroy
+  end
+  
   def statistics
+    genera = %w(genus gen. gen)
+    species = %w(species sp. sp)
     statistics = {
-      :total => nodes.count,
-      :leaves => nodes.leaves.count,
-      :species => nodes.where(:rank => "species").count
+      :total_nodes => nodes.count,
+      :total_leaves => nodes.leaves.count,
+      :unique_names => Name.count(:joins => "INNER JOIN nodes on nodes.name_id = names.id", :conditions => "nodes.tree_id = #{id}", :distinct => "names.name_string"),
+      :max_depth => nodes.maximum("depth"),
+      :genera => nodes.where("rank IN (?)", genera).count,
+      :species => nodes.where("rank IN (?)", species).count
     }
   end
   

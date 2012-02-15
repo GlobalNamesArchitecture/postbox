@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214023440) do
+ActiveRecord::Schema.define(:version => 20120215175058) do
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20120214023440) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "names", ["name_string"], :name => "index_names_on_name_string", :unique => true
 
   create_table "nodes", :force => true do |t|
     t.integer  "parent_id"
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120214023440) do
     t.string   "dwc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
 end
