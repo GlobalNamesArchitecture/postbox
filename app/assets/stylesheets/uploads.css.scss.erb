@@ -1,0 +1,44 @@
+// Place all the styles related to the Uploads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+li{line-height:1.25em;}
+fieldset.buttons ol{
+  margin-left:12em;
+}
+#upload-preview{
+  position:relative;
+  height:600px;
+}
+#preview-uploader{
+  position:absolute;
+  top:-3.5em;
+  right:1em;
+}
+#tree-wrapper{
+  height:560px;
+  width:600px;
+  overflow:auto;
+  float:left;
+}
+#tree-panel-wrapper{
+  float:right;
+  width:300px;
+}
+#tree-panel-wrapper .panel{
+  width:200px;
+  margin:0px auto 1em;
+  padding:1em;
+  border-radius:6px;
+  border:1px solid #ccc;
+  background-color:#fafafa;
+}
+#tree-stats h3{
+  padding-top:0px;
+  margin-top:0px;
+}
+#tree-download a{
+  padding-left:30px;
+  background-position:5px 50%;
+  background-repeat:no-repeat;
+  background-image: url(<%= asset_path "disk.png" %>);
+}

@@ -1,8 +1,8 @@
   <%= semantic_form_for(@contact) do |f| %>
     <%= f.inputs do %>
-      <%= f.input :email, :hint_class => 'contact-hint', :error_class => 'contact-error', :required => true %>
-      <%= f.input :name %>
-      <%= f.input :message, :hint_class => 'contact-hint', :error_class => 'contact-error', :required => true %>
+      <%= f.input :email, :hint_class => 'contact-hint', :error_class => 'inline-errors', :input_html => { :size => 50 }, :required => true %>
+      <%= f.input :name, :input_html => { :size => 50 } %>
+      <%= f.input :message, :hint_class => 'contact-hint', :error_class => 'inline-errors', :input_html => { :cols => 40 }, :required => true %>
     <% end %>
     <%= recaptcha_tags :display => { :theme => 'clean' } %>
     <%= f.buttons do %>

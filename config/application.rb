@@ -45,6 +45,9 @@ module Postbox
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'    
+    config.assets.version = '1.0'
+    
+    Mysql2::Client.default_query_options[:connect_flags] |= Mysql2::Client::LOCAL_FILES
+    
   end
 end

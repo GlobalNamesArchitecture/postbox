@@ -10,12 +10,7 @@ module CarrierWave
         def delay_carrierwave=(delay)
           @delay_carrierwave = delay
         end
-      
-        private
         
-        def enqueue
-          ::Resque::Job.create(:dwc_importer, self.class.name, id)
-        end
       end
       
       def self.included(base)

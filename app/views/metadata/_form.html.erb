@@ -1,0 +1,19 @@
+  <%= semantic_form_for @metadata, :url => upload_metadata_path(:upload_id => params[:upload_id]) do |f| %>
+    <%= f.inputs "Contact Information" do %>
+      <%= f.input :contact_givenname, :label => "Given name", :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+      <%= f.input :contact_surname, :label => "Surname", :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+      <%= f.input :contact_email, :label => "Email", :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+    <% end %>
+    <%= f.inputs "Tree Description" do %>
+      <%= f.input :title, :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+      <%= f.input :project, :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+      <%= f.input :abstract, :error_class => 'inline-errors', :input_html => { :cols => 50 } %>
+    <% end %>
+    <%= f.inputs "Rights & Licensing" do %>
+      <%= f.input :rights, :label => "Rights holder(s)", :error_class => 'inline-errors', :input_html => { :size => 50 } %>
+      <%= f.input :license, :as => :radio, :collection => ["cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa"], :error_class => 'inline-errors', :value_as_class => true %>
+    <% end %>
+    <%= f.buttons do %>
+      <%= f.commit_button "Update" %>
+    <% end %>
+  <% end %>

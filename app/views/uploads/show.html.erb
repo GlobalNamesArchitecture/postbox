@@ -4,20 +4,13 @@
 <%= content_tag :h2, "Preview" %>
 <%- end -%>
 
-<p>
-  <strong>Email:</strong>
-  <%=h @upload.email %>
+<div id="preview-uploader">
+<h3><%=h @upload.email %></h3>
+</div>
 
-  <% if @upload.tree.status == 2 %>
-    <strong>File:</strong>
-    <%= link_to "Download", @upload.dwc_url %> (<%= number_to_human_size @upload.dwc.size %>)
-  <% end %>
-</p>
-
-<div id="upload-preview">
+<div id="upload-preview" class="clear">
 
 <div id="tree-wrapper">
-
 <% if @upload.tree.status == 2 %>
   <div id="tree"></div>
 
@@ -34,11 +27,11 @@
     </script>
   <% end %>
 <% end %>
-
 </div>
 
+<div id="tree-panel-wrapper">
 <% if @upload.tree.statistics && @upload.tree.status == 2 %>
-<div id="tree-stats">
+<div id="tree-stats" class="panel">
   <h3>Basic Statistics</h3>
 <ul>
 <% @upload.tree.statistics.each do |type,stat| %>
@@ -46,7 +39,11 @@
 <% end %>
 </ul>
 </div>
+<div id="tree-eml" class="panel">
+  <%= link_to "Continue", edit_upload_metadata_path({:upload_id => @upload.token}) %>
+</div>
 <% end %>
+</div>
 
 </div>
 

@@ -1,6 +1,6 @@
   <%= semantic_form_for(@upload, :html => { :multipart => true }) do |f| %>
     <%= f.inputs do %>
-      <%= f.input :email, :hint_class => 'upload-hint', :error_class => 'upload-error' %>
+      <%= f.input :email, :hint_class => 'upload-hint', :error_class => 'inline-errors', :input_html => { :size => 50 } %>
       <%= f.input :dwc, :as => :file, :label => "Darwin Core Archive"  %>
       <%= f.input :dwc_cache, :as => :hidden %>
     <% end %>

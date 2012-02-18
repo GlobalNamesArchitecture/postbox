@@ -1,3 +1,5 @@
+require 'resque_scheduler'
+
 class UploadsController < ApplicationController
 
   def index
@@ -26,8 +28,10 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(params[:upload])
     if @upload.save
-      flash[:notice] = "Your file successfully uploaded and is in the queue for processing. This page will refresh every 10 seconds."
+      Resque.enqueue(Upload, @upload.id)
+      Resque.enqueue_in(10.days, Tree, @upload.tree.id)
       Mailer.queue_email(@upload).deliver
+      flash[:notice] = "Your file successfully uploaded and is in the queue for processing. This page will refresh every 10 seconds."
       redirect_to upload_path :id => @upload.token
     else
       render :action => 'new'

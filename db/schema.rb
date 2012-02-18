@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215175058) do
+ActiveRecord::Schema.define(:version => 20120216204636) do
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(:version => 20120215175058) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "metadata", :force => true do |t|
+    t.integer  "upload_id"
+    t.string   "title"
+    t.string   "project"
+    t.string   "contact_givenname"
+    t.string   "contact_surname"
+    t.string   "contact_email"
+    t.text     "abstract"
+    t.string   "keywords"
+    t.string   "rights"
+    t.string   "license"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "metadata", ["upload_id"], :name => "index_metadata_on_upload_id"
 
   create_table "names", :force => true do |t|
     t.string   "name_string", :null => false

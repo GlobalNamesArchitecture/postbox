@@ -1,0 +1,43 @@
+// Place all the styles related to the metadata controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+form.metadata fieldset{
+  padding:1.5em;
+  margin:1.5em;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+form.metadata legend{
+  font-size:1.25em;
+}
+form.metadata fieldset.buttons{
+  border:0px;
+  margin:2em;
+  padding:0px;
+}
+form.metadata li.radio fieldset{
+  border:0px;
+}
+form.metadata li.radio ol label{
+    width:auto;
+}
+form.formtastic fieldset ol li.radio fieldset ol li {
+    margin:0.1em 0.5em 0.5em 0;
+    display: inline-block;
+}
+#metadata_license_input legend label{
+  float:none;
+}
+#metadata_license_input ol li{
+  background-repeat:no-repeat;
+  width:220px;
+  height:60px;
+  background-position:30px 8px;
+  background-repeat:no-repeat no-repeat;
+}
+.license_cc0{background-image:url(<%= asset_path 'cc_icons/cc-0.png' %>)}
+.license_cc-by{background-image:url(<%= asset_path 'cc_icons/cc-by.png' %>)}
+.license_cc-by-sa{background-image:url(<%= asset_path 'cc_icons/cc-by-sa.png' %>)}
+.license_cc-by-nc{background-image:url(<%= asset_path 'cc_icons/cc-by-nc.png' %>)}
+.license_cc-by-nc-sa{background-image:url(<%= asset_path 'cc_icons/cc-by-nc-sa.png' %>)}
+#metadata_license_input ol li label{color:transparent;}

@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-gem 'mysql2', '0.3.10'
+gem 'mysql2', '0.3.11'
 gem 'resque'
+gem 'resque-scheduler'
 gem 'formtastic'
 gem 'dwc-archive'
 gem 'jquery-rails'
