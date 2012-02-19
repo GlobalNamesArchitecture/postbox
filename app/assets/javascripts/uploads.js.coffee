@@ -34,3 +34,5 @@ $ ->
       node = data.rslt
       id = node.obj.attr('id')
       $('#'+id).find("span.jstree-loading").remove()
+
+  $('#tabs').tabs({ selected: 0 })

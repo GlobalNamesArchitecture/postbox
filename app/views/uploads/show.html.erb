@@ -26,9 +26,29 @@
 <div id="upload-preview" class="clear">
 
 <div id="tree-wrapper">
-<% if @upload.tree.status > 1 %>
-  <div id="tree"></div>
+  <% if @upload.tree.status == 3 %>
+  <div id="tabs">
+    <ul class="navigation">
+      <li><a href="#tree">Tree</a></li>
+      <li><a href="#metadata">Description</a></li>
+    </ul>
+    <div id="tree"></div>
+    <div id="metadata">
+      <% if !@upload.metadata.project.empty? %>
+        <h3>Project</h3>
+        <div><%=h @upload.metadata.project %></div>
+      <% end %>
+      <h3>Abstract</h3>
+     <div><%=h @upload.metadata.abstract %></div>
+    </div>
+  </div>
+  <% end %>
 
+<% if @upload.tree.status == 1 || @upload.tree.status == 2 %>
+  <div id="tree"></div>
+<% end %>
+
+<% if @upload.tree.status > 1 %>
   <% content_for :javascript do %>
     <script type="text/javascript">
     <!--//--><![CDATA[//><!--
@@ -58,7 +78,11 @@
   <%= button_to "Finalize Submission", edit_upload_metadata_path({:upload_id => @upload.token}), :method => :get, :class => "update" %>
 <% elsif @upload.tree.status == 3 %>
 <div id="tree-download" class="panel">
-  <%= link_to "Download", @upload.dwc.url %>
+  <div><%= image_tag(asset_path("cc_icons/#{@upload.metadata.license}.png")) %></div>
+  <% if @upload.metadata.license != "cc-0" %>
+    <div>&copy; <%=h @upload.metadata.rights %></div>
+  <% end %>
+  <div><%= link_to "Download", @upload.dwc.url %></div>
 </div>
 <% end %>
 <% end %>

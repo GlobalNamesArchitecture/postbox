@@ -1,6 +1,8 @@
 // Place all the styles related to the Uploads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+p.hint{font-style:italic;margin-left:4em;}
 h3.contact{margin:0.5em 2em;}
 li{line-height:1.25em;}
 fieldset.buttons ol{
@@ -33,13 +35,18 @@ fieldset.buttons ol{
   border:1px solid #ccc;
   background-color:#fafafa;
 }
+#tree, #metadata{padding:1em 0.5em;}
 #tree-stats h3{
   padding-top:0px;
   margin-top:0px;
 }
+#tree-download{
+  line-height:1.25em;
+  text-align:right;
+}
 #tree-download a{
-  padding-left:30px;
-  background-position:5px 50%;
+  padding-left:25px;
+  background-position:0px 50%;
   background-repeat:no-repeat;
   background-image: url(<%= asset_path "disk.png" %>);
 }
@@ -58,3 +65,12 @@ table.uploads th.header-title{width:50%;}
 table.uploads th.header-submitted{width:20%;}
 table.uploads th{border-bottom:2px solid #ccc;}
 table.uploads tbody td{padding:0 4px;}
+
+/* jQuery UI Override */
+.ui-tabs{margin:0px;padding:0px;}
+.ui-tabs .ui-tabs-nav li a{padding:0.25em 1em;}
+.ui-widget{font-size:1em;}
+.ui-widget-content{border:0px;background:none;color:#323232;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.ui-widget-header{background:none;border-bottom:1px solid #ccc;border-radius:0px;border-left:0px;border-right:0px;border-top:0px;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background-color:#fafafa;background-image:none;}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background-color:#fff;}

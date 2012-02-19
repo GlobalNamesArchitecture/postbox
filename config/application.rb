@@ -17,6 +17,10 @@ module Postbox
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+
+    initializer :after_append_asset_paths, :group => :all, :after => :append_assets_path do
+      config.assets.paths.unshift Rails.root.join("vendor", "assets", "stylesheets", "jquery-ui", "smoothness").to_s
+    end
     
     config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
 
