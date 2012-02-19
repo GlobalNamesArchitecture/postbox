@@ -1,19 +1,24 @@
-<% title "Uploads" %>
+<% title "Completed Submissions" %>
 
 <%- content_for :content_splash do -%>
-<%= content_tag :h2, "Uploads" %>
+<%= content_tag :h2, "Completed Submissions" %>
 <%- end -%>
 
 <% if @uploads.size > 0 %>
 <table>
   <tr>
-    <th>Email</th>
+    <th>Surname</th>
+    <th>Given Name</th>
+    <th>Title</th>
+    <th>Submitted</th>
+    <th></th>
   </tr>
   <% @uploads.each do |upload| %>
     <tr>
-      <td>
-        <%=h upload.email %>
-      </td>
+      <td><%=h upload.metadata.contact_surname %></td>
+      <td><%=h upload.metadata.contact_givenname %></td>
+      <td><%=h truncate(upload.metadata.title, :length => 50) %></td>
+      <td><%= upload.metadata.updated_at.strftime("%b %e at %I:%M%p") %></td>
       <td><%= link_to "Show", upload.token %></td>
     </tr>
   <% end %>

@@ -76,7 +76,6 @@ textarea{
   color:#962825;
   border:none;
 }
-
 #SiteContainer{
   display: block;
   margin: 0;
@@ -225,7 +224,7 @@ textarea{
   background-color: #FAFAFA;
   border-top: 1px solid #ccc;
   margin-top: 40px;
-  padding: 30px;
+  padding: 30px 30px 20px;
   -webkit-border-bottom-right-radius: 8px;
   -webkit-border-bottom-left-radius: 8px;
   -moz-border-radius-bottomright: 8px;
@@ -237,11 +236,12 @@ textarea{
   float:left;
 }
 #content-features-logo{
-  width:250px;
+  width:190px;
   margin-top:0.5em;
 }
+#content-features-logo h3{width:140px;text-align:center;}
 #content-features-description{
-  width:700px;
+  width:760px;
 }
 #content-features h3{
   font-size: 13px;
@@ -261,12 +261,12 @@ input[type=submit] {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-radius: 6px;
 }
-input.create {
+input.create, input.update {
   background: #5aa52b;
   background: -moz-linear-gradient(center bottom , #1B7004 4%, #5AA52B 58%, #90CF4C 98%) repeat scroll 0 0 transparent;
   background-image:-webkit-gradient(linear, 0 100%, 0 0%, color-stop(0.04, #1B7004), color-stop(0.58, #5AA52B), color-stop(0.98, #90CF4C));
 }
-input.create:hover{
+input.create:hover, input.update:hover{
   box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);
   -moz-box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);
   -webkit-box-shadow: 1px 1px 5px 1px rgb(126, 229, 44) inset, 0 1.5px 2px 1px rgba(26, 26, 26, 0.9);

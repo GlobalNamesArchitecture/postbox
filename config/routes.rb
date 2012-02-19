@@ -56,7 +56,7 @@ Postbox::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   resources :uploads, :only => [:index, :new, :create, :show] do
-    resource :metadata, :only => [:edit, :update]
+    resource :metadata, :only => [:show, :edit, :update]
   end
   
   resources :trees, :only => [:index] do

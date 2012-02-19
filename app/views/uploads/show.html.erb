@@ -1,17 +1,32 @@
+<% if @upload.tree.status < 3 %>
 <% title "Preview" %>
 
 <%- content_for :content_splash do -%>
 <%= content_tag :h2, "Preview" %>
 <%- end -%>
 
+<% elsif @upload.tree.status == 3 %>
+
+<% title "Submission" %>
+
+<%- content_for :content_splash do -%>
+<%= content_tag :h2, "Submission" %>
+<%- end -%>
+
+<% end %>
+
 <div id="preview-uploader">
-<h3><%=h @upload.email %></h3>
+<% if @upload.tree.status < 3 %>
+  <h3><%=h @upload.email %></h3>
+<% else %>
+  <h3><%=h @upload.metadata.contact_givenname %> <%=h @upload.metadata.contact_surname %></h3>
+<% end %>
 </div>
 
 <div id="upload-preview" class="clear">
 
 <div id="tree-wrapper">
-<% if @upload.tree.status == 2 %>
+<% if @upload.tree.status > 1 %>
   <div id="tree"></div>
 
   <% content_for :javascript do %>
@@ -30,7 +45,7 @@
 </div>
 
 <div id="tree-panel-wrapper">
-<% if @upload.tree.statistics && @upload.tree.status == 2 %>
+<% if @upload.tree.statistics && @upload.tree.status > 1 %>
 <div id="tree-stats" class="panel">
   <h3>Basic Statistics</h3>
 <ul>
@@ -39,9 +54,13 @@
 <% end %>
 </ul>
 </div>
-<div id="tree-eml" class="panel">
-  <%= link_to "Continue", edit_upload_metadata_path({:upload_id => @upload.token}) %>
+<% if @upload.tree.status == 2 %>
+  <%= button_to "Finalize Submission", edit_upload_metadata_path({:upload_id => @upload.token}), :method => :get, :class => "update" %>
+<% elsif @upload.tree.status == 3 %>
+<div id="tree-download" class="panel">
+  <%= link_to "Download", @upload.dwc.url %>
 </div>
+<% end %>
 <% end %>
 </div>
 

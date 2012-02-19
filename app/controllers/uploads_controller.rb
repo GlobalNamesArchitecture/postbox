@@ -3,7 +3,7 @@ require 'resque_scheduler'
 class UploadsController < ApplicationController
 
   def index
-    @uploads = Upload.all
+    @uploads = Upload.find(:all, :joins => :tree, :conditions => { :trees => { :status => 3 } })
   end
   
   def show
@@ -12,12 +12,12 @@ class UploadsController < ApplicationController
     if queue_size > 0
       flash[:notice] = "There #{queue_size == 1 ? 'is' : 'are'} #{help.pluralize(queue_size, "job")} in the queue. You will also receive an email message when processing is complete."
     end
-    if @upload.tree.status != 2
+    if @upload.tree.status < 2
       @redirect_url = upload_path :id => @upload.token
       flash[:notice] = "Your tree is processing. You will receive an email message when it is complete."
       redirect_with_delay(@redirect_url, 10)
-    else
-      flash.delete :notice
+    elsif @upload.tree.status == 2
+      flash[:warning] = "This file will be removed in 10 days unless you finalize the submission."
     end
   end
   

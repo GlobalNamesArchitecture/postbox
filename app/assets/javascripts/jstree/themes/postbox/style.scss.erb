@@ -4,6 +4,7 @@
  * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
  */
 .jstree-postbox{ font-size:14px !important; }
+.jstree-postbox a { cursor:default; }
 .jstree-postbox li, 
 .jstree-postbox ins { background-image:url(<%= asset_path "jstree/themes/postbox/d.png" %>); background-repeat:no-repeat; background-color:transparent; }
 .jstree-postbox li { background-position:-90px 0; background-repeat:repeat-y; }
@@ -12,8 +13,8 @@
 .jstree-postbox .jstree-closed > ins { background-position:-54px 0; }
 .jstree-postbox .jstree-leaf > ins { background-position:-36px 0; }
 
-.jstree-postbox .jstree-hovered { background:#e7f4f9; border:1px solid #d8f0fa; padding:0 1px 0 1px; }
-.jstree-postbox .jstree-clicked { background:#beebff; border:1px solid #99defd; padding:0 1px 0 1px; display:inline; }
+.jstree-postbox .jstree-hovered { background:transparent; border:1px solid transparent; padding:0 1px 0 1px; }
+.jstree-postbox .jstree-clicked { background:transparent; border:1px solid transparent; padding:0 1px 0 1px; display:inline; }
 .jstree-postbox a .jstree-icon { background-position:-56px -19px; }
 .jstree-postbox a.jstree-loading .jstree-icon { background:url(<%= asset_path "jstree/themes/postbox/throbber.gif" %>) center center no-repeat !important; }
 

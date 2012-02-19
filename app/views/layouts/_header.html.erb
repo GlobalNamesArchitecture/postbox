@@ -11,7 +11,7 @@
       <%- else -%>
         <li><%= link_to "Home", root_path %></li>
       <%- end -%>
-      <%- if controller_name == "uploads" -%>
+      <%- if controller_name == "uploads" && action_name == "new" -%>
         <li class="active"><%= link_to "Upload", new_upload_path %></li>
       <%- else -%>
         <li><%= link_to "Upload", new_upload_path %></li>

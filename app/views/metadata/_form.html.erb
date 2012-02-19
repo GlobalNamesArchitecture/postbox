@@ -11,9 +11,9 @@
     <% end %>
     <%= f.inputs "Rights & Licensing" do %>
       <%= f.input :rights, :label => "Rights holder(s)", :error_class => 'inline-errors', :input_html => { :size => 50 } %>
-      <%= f.input :license, :as => :radio, :collection => ["cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa"], :error_class => 'inline-errors', :value_as_class => true %>
+      <%= f.input :license, :label => "Creative Commons License", :as => :radio, :collection => ["cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa"], :error_class => 'inline-errors', :value_as_class => true %>
     <% end %>
     <%= f.buttons do %>
-      <%= f.commit_button "Update" %>
+      <%= f.commit_button "Submit" %>
     <% end %>
   <% end %>

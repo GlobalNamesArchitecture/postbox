@@ -7,7 +7,7 @@ form.metadata fieldset{
   border:1px solid #ccc;
   border-radius:6px;
 }
-form.metadata legend{
+form.metadata legend span{
   font-size:1.25em;
 }
 form.metadata fieldset.buttons{
@@ -15,8 +15,13 @@ form.metadata fieldset.buttons{
   margin:2em;
   padding:0px;
 }
+form.metadata fieldset.buttons ol{
+  margin-left:2em;
+}
 form.metadata li.radio fieldset{
   border:0px;
+  margin-bottom:0px;
+  padding-bottom:0px;
 }
 form.metadata li.radio ol label{
     width:auto;
@@ -27,11 +32,13 @@ form.formtastic fieldset ol li.radio fieldset ol li {
 }
 #metadata_license_input legend label{
   float:none;
+  text-align:left;
+  width:400px;
 }
 #metadata_license_input ol li{
   background-repeat:no-repeat;
   width:220px;
-  height:60px;
+  height:3em;
   background-position:30px 8px;
   background-repeat:no-repeat no-repeat;
 }
