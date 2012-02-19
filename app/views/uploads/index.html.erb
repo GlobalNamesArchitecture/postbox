@@ -4,23 +4,27 @@
 <%= content_tag :h2, "Completed Submissions" %>
 <%- end -%>
 
-<% if @uploads.size > 0 %>
-<table>
+<table class="uploads">
+  <thead>
   <tr>
-    <th>Surname</th>
-    <th>Given Name</th>
-    <th>Title</th>
-    <th>Submitted</th>
+    <th class="header-user">Contact</th>
+    <th class="header-title">Title</th>
+    <th class="header-submitted">Submitted</th>
     <th></th>
   </tr>
+  </thead>
+  <tbody>
   <% @uploads.each do |upload| %>
-    <tr>
-      <td><%=h upload.metadata.contact_surname %></td>
-      <td><%=h upload.metadata.contact_givenname %></td>
+    <tr class="<% row_type = cycle("even", "odd") %><%= row_type %>">
+      <td><%=h upload.metadata.contact_surname %>, <%=h upload.metadata.contact_givenname %></td>
       <td><%=h truncate(upload.metadata.title, :length => 50) %></td>
       <td><%= upload.metadata.updated_at.strftime("%b %e at %I:%M%p") %></td>
-      <td><%= link_to "Show", upload.token %></td>
+      <td><%= link_to "Show", upload_path(:id => upload.token) %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
-<% end %>
+
+<div class="clearfix">
+  <%= will_paginate @uploads, :class => 'pagination' %>
+</div>

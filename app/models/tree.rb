@@ -8,7 +8,9 @@ class Tree < ActiveRecord::Base
 
   def self.perform(id)
     tree = self.find(id)
-    tree.nuke
+    if tree.status != 3
+      tree.nuke
+    end
   end
 
   def root
@@ -39,9 +41,9 @@ class Tree < ActiveRecord::Base
     species = %w(species sp. sp)
     statistics = {
       :total_nodes => nodes.count-1,
-      :total_leaves => nodes.leaves.count-1,
+#      :total_leaves => nodes.leaves.count-1,
       :unique_names => Name.count(:joins => "INNER JOIN nodes on nodes.name_id = names.id", :conditions => "nodes.tree_id = #{id}", :distinct => "names.name_string")-1,
-      :max_depth => nodes.maximum("depth"),
+#      :max_depth => nodes.maximum("depth"),
       :genera => nodes.where("rank IN (?)", genera).count,
       :species => nodes.where("rank IN (?)", species).count
     }

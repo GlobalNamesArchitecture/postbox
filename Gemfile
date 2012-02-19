@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'recaptcha'
 gem 'awesome_nested_set'
+gem 'will_paginate'
 gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Gems used only for assets and not required

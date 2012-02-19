@@ -1,0 +1,7 @@
+<h3><%=h @metadata.title %></h3>
+<p><%=h @metadata.contact_givenname %> <%=h @metadata.contact_surname %> (<%=h @metadata.contact_email %>)</p>
+<h3>Abstract</h3>
+<p><%=h @metadata.abstract %></p>
+<h3>Rights and Licensing</h3>
+<p>&#169; <%=h @metadata.rights %></p>
+<%= image_tag asset_path("cc_icons/#{@metadata.license}.png"), :alt => @metadata.license %>

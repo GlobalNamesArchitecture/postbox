@@ -5,23 +5,23 @@
 <%= content_tag :h2, "Preview" %>
 <%- end -%>
 
+<div id="preview-uploader">
+<% if @upload.tree.status < 3 %>
+  <h3><%=h @upload.email %></h3>
+<% end %>
+</div>
+
 <% elsif @upload.tree.status == 3 %>
 
 <% title "Submission" %>
 
 <%- content_for :content_splash do -%>
-<%= content_tag :h2, "Submission" %>
+<%= content_tag :h2, h(truncate(@upload.metadata.title, :length => 50)) %>
+<h3 class="contact"><%= h(@upload.metadata.contact_surname) %>, <%= h(@upload.metadata.contact_givenname) %></h3>
+<div class="hrDotted"></div>
 <%- end -%>
 
 <% end %>
-
-<div id="preview-uploader">
-<% if @upload.tree.status < 3 %>
-  <h3><%=h @upload.email %></h3>
-<% else %>
-  <h3><%=h @upload.metadata.contact_givenname %> <%=h @upload.metadata.contact_surname %></h3>
-<% end %>
-</div>
 
 <div id="upload-preview" class="clear">
 

@@ -200,7 +200,7 @@ textarea{
 .hrDotted {
   background: url(<%= asset_path 'horizontal-rule.png' %>) repeat-x scroll 0 0 transparent;
   height: 1px;
-  margin: 40px 0;
+  margin: 2em 0;
   width: 100%;
 }
 #content-wrapper {
@@ -392,3 +392,16 @@ input.cancel:hover{
   height: 40px;
   z-index: 0;
 }
+
+.pagination{
+    text-align: right;
+    margin: 10px 3px;
+    padding: 3px;
+}
+.pagination em.current {
+    border: 1px solid #ccc;
+    font-style: normal;
+    margin: 2px;
+    padding: 2px 5px;
+}
+tr.odd{background: none repeat scroll 0 0 #E6E6E6;}

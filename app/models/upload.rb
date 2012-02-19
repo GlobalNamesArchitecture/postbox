@@ -47,6 +47,7 @@ class Upload < ActiveRecord::Base
       activate_tree
       send_mail
     rescue RuntimeError => e
+      #TODO human message here
     end
   end
 
@@ -112,7 +113,7 @@ class Upload < ActiveRecord::Base
   end
   
   def nested_sets
-    Node.rebuild!
+#    Node.rebuild!
   end
 
   def activate_tree

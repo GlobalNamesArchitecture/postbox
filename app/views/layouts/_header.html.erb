@@ -16,6 +16,11 @@
       <%- else -%>
         <li><%= link_to "Upload", new_upload_path %></li>
       <%- end -%>
+      <%- if controller_name == "uploads" && action_name == "index" -%>
+        <li class="active"><%= link_to "Browse", uploads_path %></li>
+      <%- else -%>
+        <li><%= link_to "Browse", uploads_path %></li>
+      <%- end -%>
       <%- if controller_name == "contacts" -%>
         <li class="active"><%= link_to "Contact", new_contact_path %></li>
       <%- else -%>

@@ -1,6 +1,7 @@
 // Place all the styles related to the Uploads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h3.contact{margin:0.5em 2em;}
 li{line-height:1.25em;}
 fieldset.buttons ol{
   margin-left:12em;
@@ -43,3 +44,17 @@ fieldset.buttons ol{
   background-image: url(<%= asset_path "disk.png" %>);
 }
 .button_to div{text-align:center;}
+
+table.uploads{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width:100%;
+}
+table.uploads tr{
+  line-height:2em;
+}
+table.uploads th.header-user{width:25%;}
+table.uploads th.header-title{width:50%;}
+table.uploads th.header-submitted{width:20%;}
+table.uploads th{border-bottom:2px solid #ccc;}
+table.uploads tbody td{padding:0 4px;}
