@@ -20,6 +20,7 @@ module Postbox
 
     initializer :after_append_asset_paths, :group => :all, :after => :append_assets_path do
       config.assets.paths.unshift Rails.root.join("vendor", "assets", "stylesheets", "jquery-ui", "smoothness").to_s
+      config.assets.paths.unshift Rails.root.join("vendor", "assets", "stylesheets", "jstree", "postbox").to_s
     end
     
     config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
