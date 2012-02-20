@@ -1,6 +1,7 @@
 require 'resque_scheduler'
 
 class UploadsController < ApplicationController
+  caches_page :new
 
   def index
     page = (params[:page]) ? params[:page] : 1
@@ -47,14 +48,6 @@ class UploadsController < ApplicationController
       redirect_to upload_path :id => @upload.token
     else
       render :action => 'new'
-    end
-  end
-  
-  def destroy
-    @upload = Upload.find_by_token!(params[:id])
-    if @upload.tree.nuke
-      flash[:notice] = 'Tree successfully deleted'
-      redirect_to :action => :new
     end
   end
 
