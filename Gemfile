@@ -56,4 +56,5 @@ end
 
 group :production do
   gem 'thin'
+  gem 'rack-google_analytics'
 end
