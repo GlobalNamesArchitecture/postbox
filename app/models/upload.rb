@@ -11,7 +11,7 @@ class Upload < ActiveRecord::Base
   after_create :create_new_tree
   after_create :create_new_metadata
   
-  attr_reader   :darwin_core_data, :name_strings, :dwc_extract, :dwc_tree, :tmp_file
+  attr_reader   :darwin_core_data, :name_strings, :dwc_extract, :dwc_tree, :new_root, :tmp_file
 
   NAME_BATCH_SIZE = 10_000
   @queue = :dwc_importer
@@ -67,6 +67,11 @@ class Upload < ActiveRecord::Base
       self.metadata.save(:validate => false)
     end
   end
+  
+  def create_new_root
+    name = Name.find_or_create_by_name_string("tree_root")
+    Node.create!(:parent_id => nil, :tree => self.tree, :name => name)
+  end
 
   def store_tree
     count = 0
@@ -84,7 +89,8 @@ class Upload < ActiveRecord::Base
     @tmp_file = Tempfile.new('dwc', '/tmp')
     Node.transaction do
       #WARNING!!! Will not work if more than one worker, would otherwise need composite keys in db
-      @node_id = self.tree.root.id
+      @node_id = create_new_root.id
+      self.reload
       build_tree(dwc_tree)
       File.chmod(0644, tmp_file.path)
       #WARNING!!! Hack to accommodate OSX-specific bug in mysql2 gem
@@ -96,7 +102,7 @@ class Upload < ActiveRecord::Base
   end
 
   #TODO: accommodate lft and rgt for nested sets as well
-  def build_tree(root, parent_id = self.tree.root.id)
+  def build_tree(root, parent_id = @node_id)
     taxon_ids = root.keys
     taxon_ids.each do |taxon_id|
 
