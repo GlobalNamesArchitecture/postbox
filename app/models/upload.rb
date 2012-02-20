@@ -92,7 +92,6 @@ class Upload < ActiveRecord::Base
     Node.transaction do
       #WARNING!!! Will not work if more than one worker, would otherwise need composite keys in db
       @node_id = create_new_root.id
-      self.reload
       build_tree(dwc_tree)
       File.chmod(0644, tmp_file.path)
       #WARNING!!! Hack to accommodate OSX-specific bug in mysql2 gem
@@ -104,7 +103,7 @@ class Upload < ActiveRecord::Base
   end
 
   #TODO: accommodate lft and rgt for nested sets as well
-  def build_tree(root, parent_id = @node_id)
+  def build_tree(root, parent_id = self.tree.root.id)
     taxon_ids = root.keys
     taxon_ids.each do |taxon_id|
 
