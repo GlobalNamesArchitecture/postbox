@@ -4,7 +4,7 @@
       <%= f.input :dwc, :as => :file, :label => "Darwin Core Archive"  %>
       <%= f.input :dwc_cache, :as => :hidden %>
     <% end %>
-<p class="hint">A description of the Darwin Core Archive format can be found at <%= link_to "GBIF", "http://www.gbif.org/informatics/standards-and-tools/publishing-data/data-standards/darwin-core-archives/", :target => "_blank" %> and example files in their <%= link_to "code repository", "http://code.google.com/p/gbif-ecat/wiki/DwCArchive", :target => "_blank" %>. Accepted file extensions are <em>.gz</em> and <em>.zip</em>.</p>
+<p class="hint">A description of the Darwin Core Archive format can be found at <%= link_to "GBIF", "http://www.gbif.org/informatics/standards-and-tools/publishing-data/data-standards/darwin-core-archives/", :target => "_blank" %> and example files in their <%= link_to "code repository", "http://code.google.com/p/gbif-ecat/wiki/DwCArchive", :target => "_blank" %>. Accepted file extensions are tar.gz and zip.</p>
     <%= f.buttons do %>
       <%= f.commit_button "Upload" %>
     <% end %>
