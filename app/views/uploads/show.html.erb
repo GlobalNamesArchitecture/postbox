@@ -53,7 +53,7 @@
     <div id="tree"></div>
 <%- end -%>
 
-<%- if @upload.tree.status > 1 -%>
+<%- if @upload.tree.status > 1 && @upload.tree.status != 99 -%>
   <%- content_for :javascript do -%>
     <script type="text/javascript">
     <!--//--><![CDATA[//><!--
@@ -70,7 +70,7 @@
 </div>
 
 <div id="tree-panel-wrapper">
-<%- if @upload.tree.statistics && @upload.tree.status > 1 -%>
+<%- if @upload.tree.statistics && @upload.tree.status > 1 && @upload.tree.status != 99 -%>
 <div id="tree-stats" class="panel">
   <h3>Basic Statistics</h3>
 <ul>

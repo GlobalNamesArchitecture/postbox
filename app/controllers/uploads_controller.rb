@@ -28,6 +28,9 @@ class UploadsController < ApplicationController
       when 2
         flash.delete :notice
         flash[:warning] = "Your preview will be cleared in 10 days unless you finalize your submission."
+      when 99
+        flash.delete :notice
+        flash[:warning] = "There was a problem with your file. Check your meta.xml and/or your core file."
     end
   end
   

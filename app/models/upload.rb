@@ -48,6 +48,8 @@ class Upload < ActiveRecord::Base
       activate_tree
       send_mail
     rescue RuntimeError => e
+      self.tree.status = 99
+      self.tree.save
       send_error_mail
     end
   end
