@@ -43,11 +43,12 @@ class Upload < ActiveRecord::Base
       read_tarball
       update_metadata
       store_tree
-      nested_sets
+      #TODO: build nested sets with speed
+      #nested_sets
       activate_tree
       send_mail
     rescue RuntimeError => e
-      #TODO human message here
+      send_error_mail
     end
   end
 
@@ -86,7 +87,7 @@ class Upload < ActiveRecord::Base
       @node_id = self.tree.root.id
       build_tree(dwc_tree)
       File.chmod(0644, tmp_file.path)
-      # hack to accommodate OSX-specific bug in mysql2 gem
+      #WARNING!!! Hack to accommodate OSX-specific bug in mysql2 gem
       local = (Rails.env == "production") ? "LOCAL" : ""
       Node.connection.execute "LOAD DATA #{local} INFILE '#{tmp_file.path}' INTO TABLE nodes FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'"
     end
@@ -113,7 +114,7 @@ class Upload < ActiveRecord::Base
   end
   
   def nested_sets
-#    Node.rebuild!
+    Node.rebuild!
   end
 
   def activate_tree
@@ -123,6 +124,10 @@ class Upload < ActiveRecord::Base
   
   def send_mail
     Mailer.preview_email(self).deliver
+  end
+  
+  def send_error_mail
+    Mailer.error_email(self).deliver
   end
 
 end

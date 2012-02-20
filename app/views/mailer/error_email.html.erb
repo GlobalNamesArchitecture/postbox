@@ -5,9 +5,7 @@
   </head>
   <body>
     <h1>Thank you, <%= @upload.email %></h1>
-    <p>Your upload has finished processing.</p>
-    <p>To preview the file, follow this link:<br><%= upload_url :id => @upload.token %></p>
-    <p>Please note that the preview will be active for 10 days.</p>
+    <p>Your upload has finished processing. However, there was an error in your file. There are many possible reasons for this including an invalidly formed meta.xml descriptor or a taxon in the core file with more than one parent. We suggest you review the structure of your file and try again.</p>
     <p>====================================================</p>
     <p>Global Names PostBox, http://postbox.globalnames.org</p>
   </body>

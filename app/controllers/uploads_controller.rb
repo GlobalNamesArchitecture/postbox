@@ -27,7 +27,7 @@ class UploadsController < ApplicationController
         redirect_with_delay(redirect_url, 15)
       when 2
         flash.delete :notice
-        flash[:warning] = "Your file will be removed in 10 days unless you finalize your submission."
+        flash[:warning] = "Your preview will be cleared in 10 days unless you finalize your submission."
     end
   end
   

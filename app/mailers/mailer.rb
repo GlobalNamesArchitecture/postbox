@@ -3,7 +3,7 @@ class Mailer < ActionMailer::Base
   
   def queue_email(upload)
     @upload = upload
-    mail(:to => @upload.email, :subject => "Global Names Upload") do |format|
+    mail(:to => @upload.email, :subject => "Global Names PostBox upload") do |format|
       format.html
       format.text
     end
@@ -11,7 +11,15 @@ class Mailer < ActionMailer::Base
 
   def preview_email(upload)
     @upload = upload
-    mail(:to => @upload.email, :subject => "Global Names Preview") do |format|
+    mail(:to => @upload.email, :subject => "Global Names PostBox preview") do |format|
+      format.html
+      format.text
+    end
+  end
+  
+  def error_email(upload)
+    @upload = upload
+    mail(:to => @upload.email, :subject => "Global Names PostBox processing error") do |format|
       format.html
       format.text
     end
