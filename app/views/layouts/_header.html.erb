@@ -21,6 +21,11 @@
       <%- else -%>
         <li><%= link_to "Browse", uploads_path %></li>
       <%- end -%>
+      <%- if controller_name == "pages" && action_name == "about" -%>
+        <li class="active"><%= link_to "About", about_path %></li>
+      <%- else -%>
+        <li><%= link_to "About", about_path %></li>
+      <%- end -%>
       <%- if controller_name == "contacts" -%>
         <li class="active"><%= link_to "Contact", new_contact_path %></li>
       <%- else -%>

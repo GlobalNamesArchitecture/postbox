@@ -65,6 +65,8 @@ Postbox::Application.routes.draw do
   
   resources :contacts, :only => [:new, :create]
   
+  match '/about' => 'pages#about'
+  
   root :to => 'home#index'
   
 end
