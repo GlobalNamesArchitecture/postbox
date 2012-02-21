@@ -1,7 +1,6 @@
 require 'resque_scheduler'
 
 class UploadsController < ApplicationController
-  caches_page :new
 
   def index
     page = (params[:page]) ? params[:page] : 1
