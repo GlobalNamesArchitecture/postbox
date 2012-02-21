@@ -42,6 +42,7 @@ class Upload < ActiveRecord::Base
     begin
       read_tarball
       update_metadata
+      create_root
       store_tree
       #TODO: build nested sets with speed
       #nested_sets
@@ -50,6 +51,7 @@ class Upload < ActiveRecord::Base
     rescue RuntimeError => e
       self.tree.status = 99
       self.tree.save
+      Node.connection.execute "DELETE FROM nodes WHERE tree_id = #{self.tree.id}"
       send_error_mail
     end
   end
@@ -70,10 +72,9 @@ class Upload < ActiveRecord::Base
     end
   end
   
-  def create_new_root
+  def create_root
     name = Name.find_or_create_by_name_string("tree_root")
     Node.create!(:parent_id => nil, :tree => self.tree, :name => name)
-    self.tree.reload
   end
 
   def store_tree
@@ -89,21 +90,24 @@ class Upload < ActiveRecord::Base
       end
     end
     
-    @node_id = create_new_root.id
+    @node_id = self.tree.root.id
+
     @tmp_file = Tempfile.new('dwc', '/tmp')
-
-    #WARNING!!! Will not work if more than one worker, would otherwise need composite keys in db
-    build_tree(dwc_tree)
-    File.chmod(0644, tmp_file.path)
-
-    Node.transaction do
-      #WARNING!!! Hack to accommodate OSX-specific bug in mysql2 gem
-      local = (Rails.env == "production") ? "LOCAL" : ""
-      Node.connection.execute "LOAD DATA #{local} INFILE '#{tmp_file.path}' INTO TABLE nodes FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'"
+    begin
+      #WARNING: Will not work if more than one worker, would otherwise need composite keys in db
+      build_tree(dwc_tree)
+      tmp_file.flush
+      Node.transaction do
+        #WARNING: Hack to accommodate OSX-specific bug in mysql2 gem
+        local = (Rails.env == "production") ? "LOCAL" : ""
+        File.chmod(0644, tmp_file.path)
+        Node.connection.execute "LOAD DATA #{local} INFILE '#{tmp_file.path}' INTO TABLE nodes FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'"
+      end
+    ensure
+      tmp_file.close
+      tmp_file.unlink
     end
 
-    tmp_file.close
-    tmp_file.unlink
   end
 
   #TODO: accommodate lft and rgt for nested sets as well
@@ -119,7 +123,7 @@ class Upload < ActiveRecord::Base
       rank       = darwin_core_data[taxon_id].rank
 
       tmp_file << [@node_id, parent_id, self.tree.id, name.id, taxon_id, rank].join("\t") + "\n"
-     
+
       build_tree(root[taxon_id], @node_id)
     end
   end
