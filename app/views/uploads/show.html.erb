@@ -36,10 +36,10 @@
     <div id="metadata">
       <%- if !@upload.metadata.project.empty? -%>
         <h3>Project</h3>
-        <div><%=h @upload.metadata.project %></div>
+        <div class="metadata-content"><%=h @upload.metadata.project %></div>
       <% end rescue raise ActiveRecord::RecordNotFound%>
       <h3>Abstract</h3>
-     <div><%=h @upload.metadata.abstract %></div>
+     <div class="metadata-content"><%=h @upload.metadata.abstract %></div>
     </div>
   </div>
   <%- end -%>
