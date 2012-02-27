@@ -25,14 +25,16 @@
 
 <div id="upload-preview" class="clear">
 
-<div id="tree-wrapper">
+<div id="tree-nav-wrapper">
   <%- if @upload.tree.status == 3 -%>
   <div id="tabs">
     <ul class="navigation">
-      <li><a href="#tree">Tree</a></li>
+      <li><a href="#tree-wrapper">Tree</a></li>
       <li><a href="#metadata">Description</a></li>
     </ul>
-    <div id="tree"></div>
+    <div id="tree-wrapper">
+      <div id="tree"></div>
+    </div>
     <div id="metadata">
       <%- if !@upload.metadata.project.empty? -%>
         <h3>Project</h3>
@@ -50,7 +52,9 @@
   <% when 1 %>
     <div id="preview-loader">Building the preview...</div>
   <% when 2 %>
-    <div id="tree"></div>
+    <div id="tree-wrapper">
+      <div id="tree"></div>
+    </div>
 <%- end -%>
 
 <%- if @upload.tree.status > 1 && @upload.tree.status != 99 -%>
